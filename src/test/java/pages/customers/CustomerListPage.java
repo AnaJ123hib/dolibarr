@@ -17,6 +17,6 @@ public class CustomerListPage extends PageObject {
     }
     public void selectCustomer(CustomerData customer) {
         table.findByFilter(filterId, customer.getId());
-        userIdTable.click();
+        userIdTable.waitUntilClickable().click();
     }
 }
