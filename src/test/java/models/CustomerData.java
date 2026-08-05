@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CustomerData {
+    private String id;
     private String memberType;
     private String natureOfMember;
     private String company;

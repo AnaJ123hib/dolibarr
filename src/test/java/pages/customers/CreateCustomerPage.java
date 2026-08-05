@@ -31,11 +31,10 @@ public class CreateCustomerPage extends PageObject {
     @FindBy (id = "birth") private WebElementFacade birthInput;
     @FindBy (id = "select2-selection__rendered") private WebElementFacade membershipStateDropdown;
     @FindBy (css = ".button-save") private WebElementFacade createCustomerButton;
-    @FindBy(xpath = "//span[@class='valignmiddle' and normalize-space()]")
-    private WebElementFacade customerProfileName;
+
     @FindBy (className = "jnotify-message") private WebElementFacade errorMessage;
     @FindBy (className = "button-cancel") private WebElementFacade cancelButton;
-
+    @FindBy(css = "div.refid") private WebElementFacade customerInfo;
     private void selectDropdownOption(WebElementFacade element, String value) {
         if(value != null && !value.isBlank()) {
             element.click();
@@ -86,13 +85,13 @@ public class CreateCustomerPage extends PageObject {
         typeIfPresent(birthInput, customer.getDateOfBirth());
         selectDropdownOption(membershipStateDropdown, customer.getPublicMembership());
     }
-    public void createCustomer(){
+    public void saveCustomerData(){
         createCustomerButton.click();
     }
-    public boolean customerUsernameIsDisplayed(CustomerData customer) {
-        return customerProfileName.isVisible()
-                && customerProfileName.getText().equals(customer.getUsername());
+    public void setCustomerId(CustomerData customer) {
+         customer.setId(customerInfo.getText().split("\\R")[0].trim());
     }
+
     public boolean isErrorMessageDisplayed(){
         return errorMessage.isVisible();
     }
@@ -100,9 +99,12 @@ public class CreateCustomerPage extends PageObject {
         cancelButton.click();
     }
 
-    public boolean isCustomerDisplayed(CustomerData customer) {
-        return findAll("table tbody tr").stream()
-                .anyMatch(row -> row.getText().contains(customer.getFirstName())
-                        && row.getText().contains(customer.getLastName()));
+    public void leaveSpaceBlank(String field) {
+        switch (field){
+            case "Name":
+                firstnameInput.clear(); break;
+            case "Last name":
+                lastnameInput.clear(); break;
+        }
     }
 }
