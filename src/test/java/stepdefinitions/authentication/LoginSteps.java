@@ -42,4 +42,12 @@ public class LoginSteps {
     public void theUserShouldSeeAnAuthenticationErrorMessage() {
         assertThat(loginPage.isErrorMessageDisplayed()).isTrue();
     }
+
+    @Given("the user is logged in")
+    public void theUserIsLoggedIn() {
+        System.out.println("START SCENARIO");
+        System.out.println(loginPage.getDriver().hashCode());
+        loginPage.openSite();
+        loginPage.login(ConfigManager.getUsername(), ConfigManager.getPassword());
+    }
 }
