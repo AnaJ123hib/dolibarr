@@ -26,7 +26,7 @@ public class CustomerFactory {
             .memberType("Production")
             .natureOfMember("Individual")
             .company("Company XYZ")
-            .lastName("Jimenes")
+            .lastName("Jimenes" + System.currentTimeMillis())
             .firstName("Valentina" + System.currentTimeMillis())
             .email("email@test.com")
             .web("testWeb.com")
@@ -34,6 +34,7 @@ public class CustomerFactory {
             .personalPhone("987654321")
             .mobile("987654321")
             .dateOfBirth("10/10/2000")
+            .id(String.valueOf(System.currentTimeMillis()))
             .build();
 
     public static CustomerData CUSTOMER_WITHOUT_NAME = CustomerData.builder()
