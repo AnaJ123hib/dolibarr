@@ -26,7 +26,7 @@ public class CustomerListPage extends PageObject {
             case "Name":
                 table.findByFilter(filterName, customer.getFirstName()); break;
             case "Member type":
-                dropdown.selectOption(filterMemberType, customer.getMemberType()); break;
+                dropdown.selectIndex(filterMemberType, customer.getMemberType()); break;
             case "ID":
             default:
                 table.findByFilter(filterId, customer.getId()); break;

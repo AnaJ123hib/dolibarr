@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class CustomerData {
     private String id;
-    private String memberType;
+    private int memberType;
     private String natureOfMember;
     private String company;
     private String title;

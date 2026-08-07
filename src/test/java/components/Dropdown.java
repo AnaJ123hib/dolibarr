@@ -11,4 +11,11 @@ public class Dropdown extends PageObject {
                     "and normalize-space()='" + value + "']").click();
         }
     }
+
+    public void selectIndex(WebElementFacade element, int index) {
+        if(index >= 0) {
+            element.click();
+            findAll("//li[@class='select2-results__option']").get(index).click();
+        }
+    }
 }

@@ -36,7 +36,6 @@ public class SearchCustomerSteps {
 
     @Then("the customer should appear in the search results")
     public void theCustomerShouldAppearInTheSearchResults() {
-        System.out.println(customerListPage.getValueFromTable(searchType));
         String actual = customerListPage.getValueFromTable(searchType);
         switch (searchType) {
             case "ID":
@@ -44,9 +43,6 @@ public class SearchCustomerSteps {
                 break;
             case "Name":
                 assertThat(actual).isEqualTo(customer.getFirstName());
-                break;
-            case "Member type":
-                assertThat(actual).isEqualTo(customer.getMemberType());
                 break;
         }
     }

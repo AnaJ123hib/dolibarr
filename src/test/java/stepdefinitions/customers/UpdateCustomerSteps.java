@@ -32,8 +32,6 @@ public class UpdateCustomerSteps {
 
     @When("the user starts editing the customer information")
     public void theUserStartsEditingTheCustomerInformation() {
-        customerListPage.navigateToListMembers();
-        customerListPage.selectCustomer(CustomerFactory.DEFAULT_CUSTOMER);
         customerDetailsPage.goToModifyCustomer();
         createCustomerPage.fillCustomerForm(CustomerFactory.EDITED_CUSTOMER);
     }

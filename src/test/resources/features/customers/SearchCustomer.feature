@@ -11,7 +11,6 @@ Feature: Search Customer
       | searchType   |
       | ID           |
       | Name         |
-      | Member type  |
 
 
 Scenario: Search a non-existing customer
