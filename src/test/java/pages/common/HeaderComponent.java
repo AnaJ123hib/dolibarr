@@ -9,7 +9,7 @@ public class HeaderComponent extends PageObject {
     private WebElementFacade productButton;
     @FindBy (css = "#mainmenua_members") private WebElementFacade mememberButton;
     @FindBy (id = "mainmenutd_commercial") private WebElementFacade commercialButton;
-
+    @FindBy (id = "mainmenutd_billing") private WebElementFacade billingButton;
 
     public void clickProduct(){
         productButton.click();
@@ -18,5 +18,6 @@ public class HeaderComponent extends PageObject {
         mememberButton.click();
     }
     public void clickCommercial() { commercialButton.click(); }
+    public void clickBilling() { billingButton.click(); }
 
 }
