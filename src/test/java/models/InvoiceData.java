@@ -24,7 +24,7 @@ public class InvoiceData {
 
     public static String getCurrentDate() {
         return LocalDate.now()
-                .minusDays(1)
+                .minusDays(5)
                 .format(DATE_FORMAT);
     }
 }
