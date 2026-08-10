@@ -7,8 +7,9 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class ProposalData {
+public class OrderData {
     private int vendorIndex;
+    private String refVendor;
     private String paymentTerms;
     private String paymentMethod;
     private String deliveryDate;

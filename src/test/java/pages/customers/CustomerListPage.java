@@ -1,11 +1,11 @@
 package pages.customers;
 
-import components.Dropdown;
 import components.Table;
 import models.CustomerData;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
+import static components.FormUtils.*;
 
 public class CustomerListPage extends PageObject {
     @FindBy (xpath = "//a[contains(@href,'adherents/list.php') and not(contains(@href,'statut='))]")
@@ -17,7 +17,6 @@ public class CustomerListPage extends PageObject {
 
     @FindBy (css = "a .usertext") private WebElementFacade userIdTable;
     private Table table;
-    private Dropdown dropdown;
     public void navigateToListMembers(){
         listMenuButton.click();
     }
@@ -26,7 +25,7 @@ public class CustomerListPage extends PageObject {
             case "Name":
                 table.findByFilter(filterName, customer.getFirstName()); break;
             case "Member type":
-                dropdown.selectIndex(filterMemberType, customer.getMemberType()); break;
+                selectIfNotInvalid(filterMemberType, customer.getMemberType()); break;
             case "ID":
             default:
                 table.findByFilter(filterId, customer.getId()); break;

@@ -1,11 +1,10 @@
 package pages.customers;
 
-import components.Dropdown;
 import models.CustomerData;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.core.IsEqual;
 import org.openqa.selenium.support.FindBy;
+import static components.FormUtils.*;
 
 import java.util.Objects;
 
@@ -35,7 +34,6 @@ public class CreateCustomerPage extends PageObject {
     @FindBy (className = "jnotify-message") private WebElementFacade errorMessage;
     @FindBy (className = "button-cancel") private WebElementFacade cancelButton;
     @FindBy(css = "div.refid") private WebElementFacade customerInfo;
-    Dropdown dropdown;
 
     private void selectNature(String value) {
         if(value != null && !value.isBlank()){
@@ -49,33 +47,28 @@ public class CreateCustomerPage extends PageObject {
             }
         }
     }
-    private void typeIfPresent(WebElementFacade element, String value) {
-        if(value != null && !value.isBlank()) {
-            element.type(value);
-        }
-    }
     public void navigateToNewMemberPage(){
         newMemberMenuButton.click();
     }
     public void fillCustomerForm(CustomerData customer) {
-        dropdown.selectIndex(memberTypeDropdown, customer.getMemberType());
+        selectIfNotInvalid(memberTypeDropdown, customer.getMemberType());
         selectNature(customer.getNatureOfMember());
-        typeIfPresent(companyInput, customer.getCompany());
-        dropdown.selectOption(typeDropdown, customer.getTitle());
-        typeIfPresent(lastnameInput, customer.getLastName());
-        typeIfPresent(firstnameInput, customer.getFirstName());
-        dropdown.selectOption(genderDropdown, customer.getGender());
-        typeIfPresent(emailInput, customer.getEmail());
-        typeIfPresent(webUrlInput, customer.getWeb());
-        typeIfPresent(addressInput, customer.getAddress());
-        typeIfPresent(zipcodeInput, customer.getZipCode());
-        typeIfPresent(cityInput, customer.getCity());
-        dropdown.selectOption(countryDrodown, customer.getCountry());
-        typeIfPresent(stateInput, customer.getState());
-        typeIfPresent(personalPhoneInput, customer.getPersonalPhone());
-        typeIfPresent(mobilePhoneInput, customer.getMobile());
-        typeIfPresent(birthInput, customer.getDateOfBirth());
-        dropdown.selectOption(membershipStateDropdown, customer.getPublicMembership());
+        typeIfNotNull(companyInput, customer.getCompany());
+        selectIfNotNull(typeDropdown, customer.getTitle());
+        typeIfNotNull(lastnameInput, customer.getLastName());
+        typeIfNotNull(firstnameInput, customer.getFirstName());
+        selectIfNotNull(genderDropdown, customer.getGender());
+        typeIfNotNull(emailInput, customer.getEmail());
+        typeIfNotNull(webUrlInput, customer.getWeb());
+        typeIfNotNull(addressInput, customer.getAddress());
+        typeIfNotNull(zipcodeInput, customer.getZipCode());
+        typeIfNotNull(cityInput, customer.getCity());
+        selectIfNotNull(countryDrodown, customer.getCountry());
+        typeIfNotNull(stateInput, customer.getState());
+        typeIfNotNull(personalPhoneInput, customer.getPersonalPhone());
+        typeIfNotNull(mobilePhoneInput, customer.getMobile());
+        typeIfNotNull(birthInput, customer.getDateOfBirth());
+        selectIfNotNull(membershipStateDropdown, customer.getPublicMembership());
     }
     public void saveCustomerData(){
         createCustomerButton.click();

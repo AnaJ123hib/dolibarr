@@ -1,10 +1,10 @@
 package pages.commerce;
 
-import components.Dropdown;
 import models.ProposalData;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
+import static components.FormUtils.*;
 
 public class CreateProposalPage extends PageObject {
     @FindBy(className = "menu_contenu_supplier_proposal_card")
@@ -15,31 +15,13 @@ public class CreateProposalPage extends PageObject {
     @FindBy (id = "liv_") private WebElementFacade deliveryDatePicker;
     @FindBy (className = "button-save") private WebElementFacade saveButton;
     @FindBy (className = "button-cancel") private WebElementFacade cancelButton;
-    Dropdown dropdown;
 
     public void navigateToNewProposal() {
         newProposalButton.click();
     }
 
-    private void typeIfNotNull(WebElementFacade element, String value) {
-        if(value != null && !value.isBlank()){
-            element.type(value);
-        }
-    }
-    private void selectIfNotInvalid(WebElementFacade element, int value) {
-        if(value >= 0){
-            dropdown.selectIndex(element, value);
-        }
-    }
-
-    private void selectIfNotNull(WebElementFacade element, String value) {
-        if(value != null && !value.isBlank()){
-            dropdown.selectOption(element, value);
-        }
-    }
-
     public void fillProposalForm(ProposalData proposal) {
-        selectIfNotInvalid(vendedorDropdown, proposal.getVendedorIndex());
+        selectIfNotInvalid(vendedorDropdown, proposal.getVendorIndex());
         selectIfNotNull(termsDropdown, proposal.getPaymentTerms());
         selectIfNotNull(methodDropdown, proposal.getPaymentMethod());
         typeIfNotNull(deliveryDatePicker, proposal.getDeliveryDate());

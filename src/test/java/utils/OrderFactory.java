@@ -1,11 +1,12 @@
 package utils;
 
-import models.ProposalData;
+import models.OrderData;
 
-public class ProposalFactory {
-    public static ProposalData DEFAULT_PROPOSAL = ProposalData
+public class OrderFactory {
+    public static OrderData DEFAULT_ORDER = OrderData
             .builder()
             .vendorIndex(1)
+            .refVendor("test")
             .paymentTerms("30 days")
             .paymentMethod("Cash")
             .deliveryDate("10/10/2026")
