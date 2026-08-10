@@ -19,5 +19,3 @@ Feature: Billing and Payment
     And the user has added a line
     When the user validates the invoice
     Then the invoice status should be changed to not pay
-
-  Scenario: Register a payment for an invoice

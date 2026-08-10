@@ -23,6 +23,8 @@ public class InvoiceData {
             DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public static String getCurrentDate() {
-        return LocalDate.now().format(DATE_FORMAT);
+        return LocalDate.now()
+                .minusDays(1)
+                .format(DATE_FORMAT);
     }
 }
