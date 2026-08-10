@@ -10,7 +10,6 @@ import org.openqa.selenium.support.FindBy;
 import java.util.Objects;
 
 public class CreateCustomerPage extends PageObject {
-    @FindBy (css = "#mainmenua_members") private WebElementFacade mememberMenuButton;
     @FindBy (css = ".menu_contenu_adherents_card a") private WebElementFacade newMemberMenuButton;
     @FindBy (id = "select2-typeid-container") private WebElementFacade memberTypeDropdown;
     @FindBy (id = "phisicalinput") private WebElementFacade individualRadioButton;
@@ -54,9 +53,6 @@ public class CreateCustomerPage extends PageObject {
         if(value != null && !value.isBlank()) {
             element.type(value);
         }
-    }
-    public void navigateToMembersPage() {
-        mememberMenuButton.click();
     }
     public void navigateToNewMemberPage(){
         newMemberMenuButton.click();

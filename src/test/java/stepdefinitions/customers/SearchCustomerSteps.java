@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.CustomerData;
 import pages.authentication.LoginPage;
+import pages.common.HeaderComponent;
 import pages.customers.CreateCustomerPage;
 import pages.customers.CustomerListPage;
 import utils.ConfigManager;
@@ -16,6 +17,7 @@ public class SearchCustomerSteps {
     CustomerListPage customerListPage;
     CreateCustomerPage createCustomerPage;
     LoginPage loginPage;
+    HeaderComponent headerComponent;
     private String searchType;
     CustomerData customer = CustomerFactory.DEFAULT_CUSTOMER;
 
@@ -23,7 +25,7 @@ public class SearchCustomerSteps {
     public void theUserIsOnListMemberPage() {
         loginPage.openSite();
         loginPage.login(ConfigManager.getUsername(), ConfigManager.getPassword());
-        createCustomerPage.navigateToMembersPage();
+        headerComponent.clickMember();
         customerListPage.navigateToListMembers();
     }
 

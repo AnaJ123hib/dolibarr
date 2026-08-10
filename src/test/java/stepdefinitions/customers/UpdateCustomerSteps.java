@@ -3,22 +3,21 @@ package stepdefinitions.customers;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.common.HeaderComponent;
 import pages.customers.CreateCustomerPage;
 import pages.customers.CustomerDetailsPage;
-import pages.customers.CustomerListPage;
 import utils.CustomerFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UpdateCustomerSteps {
     CustomerDetailsPage customerDetailsPage;
-    CustomerListPage customerListPage;
     CreateCustomerPage createCustomerPage;
-
+    HeaderComponent headerComponent;
 
     @And("the user has created a customer")
     public void theUserHasCreatedACustomer() {
-        createCustomerPage.navigateToMembersPage();
+        headerComponent.clickMember();
         createCustomerPage.navigateToNewMemberPage();
         createCustomerPage.fillCustomerForm(CustomerFactory.DEFAULT_CUSTOMER);
         createCustomerPage.saveCustomerData();

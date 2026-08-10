@@ -3,6 +3,7 @@ package stepdefinitions.customers;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.common.HeaderComponent;
 import pages.customers.CreateCustomerPage;
 import pages.customers.CustomerDetailsPage;
 import utils.CustomerFactory;
@@ -12,9 +13,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CreateCustomerSteps {
     CreateCustomerPage createCustomerPage;
     CustomerDetailsPage customerDetailsPage;
+    HeaderComponent headerComponent;
     @And("the user is on the create customer page")
     public void theUserIsOnTheCreateCustomerPage() {
-        createCustomerPage.navigateToMembersPage();
+        headerComponent.clickMember();
         createCustomerPage.navigateToNewMemberPage();
     }
 
